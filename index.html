@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Apex Developer E-Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /*
+        ========================================
+        CSS STYLES: VIBRANT MINIMALISM THEME
+        ========================================
+        */
+        :root {
+            --color-bg: #121212; /* Dark Mode Background */
+            --color-card: #1e1e1e; /* Darker Card Background */
+            --color-text: #ffffff;
+            --color-accent: #00d4ff; /* Electric Cyan/Teal Accent */
+            --color-secondary: #333333;
+            --color-success: #10b981;
+        }
+
+        /* --- Base & Scroll Behavior --- */
+        html {
+            scroll-behavior: smooth; /* Enable smooth scrolling for anchors */
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            margin: 0;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            padding-top: 60px; /* Space for the fixed navigation bar */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navigation Bar --- */
+        #main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(30, 30, 30, 0.95); /* Semi-transparent card color */
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            font-weight: 500;
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+            border-bottom: 2px solid var(--color-accent);
+        }
+        
+        /* --- Global Headings & Buttons --- */
+        section {
+            padding: 60px 0;
+            border-top: 1px solid var(--color-secondary);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--color-accent);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #00aacc;
+            transform: translateY(-2px);
+        }
+
+        /* --- 1. HERO SECTION (Instant Profile) --- */
+        #hero {
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        .profile-pic-wrapper {
+            display: inline-block;
+            padding: 5px;
+            background: linear-gradient(45deg, var(--color-accent), #4f80ff);
+            border-radius: 50%;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        #profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-bg);
+        }
+
+        #name-headline {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(90deg, #ffffff, var(--color-accent));
+            
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            
+            -webkit-text-fill-color: transparent;
+        }
+
+        #tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #ccc;
+            margin-top: 5px;
+            margin-bottom: 30px;
+        }
+
+        .social-hub {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .social-link:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* --- 2. SKILL MATRIX --- */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background-color: var(--color-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-card h3 {
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .progress-bar-container {
+            height: 8px;
+            background-color: var(--color-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-accent), #4f80ff);
+            transition: width 1s ease-out;
+        }
+
+        /* --- 3. EDUCATION TIMELINE (New Section) --- */
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 30px; /* Space for the line */
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10px;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--color-secondary);
+        }
+
+        .education-entry {
+            background-color: var(--color-card);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .education-entry::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: var(--color-accent);
+            border: 2px solid var(--color-bg);
+            border-radius: 50%;
+            left: -33px; /* Adjust based on padding-left and line position */
+            top: 25px;
+            z-index: 1;
+        }
+
+        .education-entry h4 {
+            color: var(--color-accent);
+            margin-top: 0;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .education-entry .duration {
+            display: block;
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- 4. PROJECT SHOWCASE --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--color-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--color-secondary);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-thumbnail {
+            height: 200px;
+            background-color: var(--color-secondary);
+            background-size: cover; 
+            background-position: center top; 
+            background-repeat: no-repeat;
+            border-bottom: 1px solid var(--color-secondary);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--color-accent);
+        }
+
+        .tech-badges {
+            margin: 10px 0 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #383838;
+            color: #ddd;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+
+        .project-actions {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        .project-actions a {
+            flex-grow: 0;
+            text-align: center;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .live-link {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+        }
+        .live-link:hover { background-color: #00aacc; }
+
+        /* --- 5. VERIFICATION VAULT (Updated Logo Size) --- */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background-color: var(--color-card);
+            padding: 20px;
+            border: 1px solid var(--color-secondary); 
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex; 
+            align-items: center; 
+        }
+        
+        .cert-logo {
+            /* INCREASED SIZE FOR PROMINENCE */
+            width: 60px; 
+            height: 60px;
+            object-fit: contain;
+            margin-right: 20px; /* Increased margin */
+            padding: 5px; 
+            border-radius: 4px; /* Square/slightly rounded corners */
+            background-color: #000; 
+        }
+
+        .cert-details {
+            flex-grow: 1; 
+        }
+
+        .cert-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--color-text);
+        }
+
+        .cert-card p {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 5px; 
+        }
+
+        .cert-card a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--color-secondary);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                padding-top: 10px;
+            }
+            .nav-links a {
+                margin: 0 5px;
+                padding: 5px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="main-nav">
+        <div class="container nav-content">
+            <a href="#hero" class="nav-brand">WEN</a>
+            <div class="nav-links">
+                <a href="#hero">Profile</a>
+                <a href="#skills">Info & Skills</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <div class="profile-pic-wrapper">
+                <img src="wen.jpg" alt="Your Profile" id="profile-pic">
+            </div>
+            <h1 id="name-headline">Wenmark Baja</h1>
+            <h2 id="tagline">I am a BSIT student passionate about learning technology, improving my skills, and building practical IT projects as I prepare for my future career.</h2>
+
+            <div style="margin-bottom: 25px; font-size: 1.1rem; color: #ccc;">
+                <p style="margin: 5px 0;"><i class="fas fa-envelope" style="color: var(--color-accent);"></i> Email: <a href="bajawenmark@gmail.com" style="color: inherit; text-decoration: none;">bajawenmark@gmail.com</a></p>
+                <p style="margin: 5px 0;"><i class="fas fa-phone" style="color: var(--color-accent);"></i> Phone: <a href="tel:+63 912 9289 862" style="color: inherit; text-decoration: none;">+63 912 9289 862</a></p>
+            </div>
+
+            <div class="social-hub">
+                <a href="https://github.com/tsukaasa1?tab=overview&from=2025-10-01&to=2025-10-31" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/wen.mark.5055" target="_blank" class="social-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+
+            <a href="#projects" class="cta-button">View Live Projects</a>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 id="skills-heading">Basic Info & Skills</h2>
+        <div class="container skill-grid">
+            
+            <div class="info-card">
+                <h3>Basic Information</h3>
+                <p><i class="fas fa-user" style="color: var(--color-accent); margin-right: 5px;"></i> <span style="color: #ccc;">Name:</span> Baja, Wenmark A.</p>
+                <p><i class="fas fa-birthday-cake" style="color: var(--color-accent); margin-right: 5px;"></i> <span style="color: #ccc;">Age:</span> 19 Year Old</p>
+                <p><i class="fas fa-calendar" style="color: var(--color-accent); margin-right: 5px;"></i> <span style="color: #ccc;">Birthdate:</span> 12-28-2005</p>
+                <p><i class="fas fa-venus-mars" style="color: var(--color-accent); margin-right: 5px;"></i> <span style="color: #ccc;">Sex:</span> Male</p>
+                <p><i class="fas fa-heart" style="color: var(--color-accent); margin-right: 5px;"></i> <span style="color: #ccc;">Civil Status:</span> Single</p>
+                <p><i class="fas fa-flag" style="color: var(--color-accent); margin-right: 5px;"></i> <span style="color: #ccc;">Citizenship:</span> Filipino</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Personal Skills</h3>
+                <div id="skill-list">
+                    </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Academic Background</h2>
+        <div class="container education-timeline" id="education-timeline">
+            </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Live Project Showcase</h2>
+        <div class="container project-grid" id="project-list">
+            </div>
+    </section>
+
+    <section id="certificates">
+        <h2>My Certificates</h2>
+        <div class="container cert-grid" id="cert-list">
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Wenmark Baja. Designed with HTML, CSS, and Vanilla JS.</p>
+    </footer>
+
+    <script>
+        // --- 1. MOCK DATA ---
+        const skillsData = [
+            { name: 'Adaptability', level: 75 },
+            { name: 'Attention to Detail', level: 85 },
+            { name: 'Problem Solving', level: 70 },
+            { name: 'Discipline', level: 85 },
+            { name: 'Time Management', level: 80 },
+            { name: 'Computer Literacy', level: 75 },
+        ];
+        
+        // UPDATED EDUCATION DATA FORMAT
+        const educationData = [
+            {
+                institution: 'Colegio de Montalban (CdM)',
+                level: 'College',
+                course: 'BS Information Technology (BSIT)',
+                batch: '2027 (Expected)',
+                details: 'Focused on Full Stack Development, Database Management, and Cloud Computing principles.'
+            },
+          {
+                institution: 'Asian Institute of Computer Studies (AICS)',
+                level: 'Senior High School',
+                course: 'Information and Communications Technology (ICT) Strand', // UPDATED
+                batch: '2024',
+                details: 'Specialized in computer systems, programming fundamentals, and technical expertise.' // Updated details for ICT
+            },
+            {
+                institution: 'Kasiglahan Village National High School (KVNHS)',
+                level: 'Junior High School',
+                course: 'N/A', // Not applicable for this level
+                batch: '2022',
+                details: 'Completed general secondary education requirements.'
+            },
+            {
+                institution: 'Maranatha Christian Academy (MCA)',
+                level: 'Elementary School',
+                course: 'N/A', // Not applicable for this level
+                batch: '2018',
+                details: 'Completed primary education.'
+            }
+        ];
+
+        // Project data (Image URLs are local paths)
+        const projectsData = [
+            {
+                title: 'Student Information System (Vanilla JS)',
+                description: 'A simple student info management interface demonstrating basic DOM manipulation and data display using pure JavaScript.',
+                stack: ['HTML', 'CSS', 'JavaScript'],
+                liveUrl: 'https://studentinfo-jalen-wen-marco-sadava.netlify.app/',
+                imageUrl: 'studentform.jpg' 
+            },
+            {
+                title: 'Basic Calculator Application',
+                description: 'A functional, user-friendly calculator built to showcase proficiency in JavaScript logic and UI design principles.',
+                stack: ['HTML', 'CSS', 'JavaScript'],
+                liveUrl: 'https://calcu-jalen-wen-marco-sadava.netlify.app/',
+                imageUrl: 'calculator.jpg' 
+            },
+            {
+                title: 'Student Info System (jQuery)',
+                description: 'Re-implementation of the student information system utilizing jQuery for faster and more concise DOM interaction.',
+                stack: ['HTML', 'CSS', 'jQuery'],
+                liveUrl: 'https://stdntinfojquerry-jalen-wen-marco-sada.netlify.app/',
+                imageUrl: 'formjquery.jpg' 
+            },
+            {
+                title: 'Memory Game',
+                description: 'A classic "matching pairs" memory game, highlighting logic, state management, and engaging user experience.',
+                stack: ['HTML', 'CSS', 'JavaScript'],
+                liveUrl: 'https://mmrygme-jalen-wen-marco-sadava.netlify.app/',
+                imageUrl: 'memorygame.jpg' 
+            },
+            {
+                title: 'Quiz Application',
+                description: 'A dynamic quiz application that tracks scores and provides instant feedback, built using fundamental web technologies.',
+                stack: ['HTML', 'CSS', 'JavaScript'],
+                liveUrl: 'https://quizapp-jalen-wen-marco-sadava.netlify.app/',
+                imageUrl: 'quiz.jpg' 
+            },
+        ];
+
+        // CERTIFICATES DATA: Using external placeholders
+        const certificatesData = [
+            { 
+                name: 'Introduction to HTML', 
+                issuer: 'simplilearn', 
+                date: '12-12-2025', 
+                verifyUrl: 'https://simpli-web.app.link/e/WYHoVW894Yb',
+                logoUrl: 'certHTML.jpg'
+            },
+            { 
+                name: 'Introduction to CSS', 
+                issuer: 'simplilearn', 
+                date: '12-12-2025', 
+                verifyUrl: 'https://simpli-web.app.link/e/wjhaq9694Yb',
+                logoUrl: 'certCSS.jpg'
+            },
+            { 
+                name: 'JavaScript for Beginners', 
+                issuer: 'simplilearn', 
+                date: '12-12-2025', 
+                verifyUrl: 'https://simpli-web.app.link/e/GzbLSoba5Yb',
+                logoUrl: 'certJS.jpg'
+            },
+        ];
+
+
+        // --- 2. DYNAMIC CONTENT RENDERING FUNCTIONS ---
+
+        function renderSkills() {
+            const list = document.getElementById('skill-list');
+            list.innerHTML = skillsData.map(skill => `
+                <div class="skill-item">
+                    <div class="skill-item-header">
+                        <span>${skill.name}</span>
+                        <span style="color: var(--color-accent);">${skill.level}%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 0%;" data-level="${skill.level}"></div>
+                    </div>
+                </div>
+            `).join('');
+            
+            setTimeout(animateSkills, 500);
+        }
+        
+        // UPDATED renderEducation() FUNCTION
+        function renderEducation() {
+            const timeline = document.getElementById('education-timeline');
+            timeline.innerHTML = educationData.map(edu => {
+                // Construct the main title based on level type
+                const mainTitle = edu.course && edu.course !== 'N/A'
+                    ? `${edu.level}: ${edu.course}`
+                    : edu.level;
+
+                // Construct the detail line
+                const detailLine = `${edu.institution} | Batch Graduate: ${edu.batch}`;
+
+                return `
+                    <div class="education-entry">
+                        <h4>${mainTitle}</h4>
+                        <span class="duration">${detailLine}</span>
+                        <p style="font-size: 0.95rem;">${edu.details}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+
+        function renderProjects() {
+            const grid = document.getElementById('project-list');
+            grid.innerHTML = projectsData.map(project => `
+                <div class="project-card">
+                    <div class="project-thumbnail" style="background-image: url('${project.imageUrl}');" title="${project.title} Screenshot">
+                    </div>
+                    <div class="project-content">
+                        <h3>${project.title}</h3>
+                        <p style="font-size: 0.9rem;">${project.description}</p>
+                        
+                        <div class="tech-badges">
+                            ${project.stack.map(tech => `<span class="badge">${tech}</span>`).join('')}
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="${project.liveUrl}" target="_blank" class="live-link"><i class="fas fa-globe"></i> View Live</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCertificates() {
+            const grid = document.getElementById('cert-list');
+            grid.innerHTML = certificatesData.map(cert => `
+                <div class="cert-card">
+                    <img src="${cert.logoUrl}" alt="${cert.issuer} Logo" class="cert-logo">
+                    <div class="cert-details">
+                        <h3>${cert.name}</h3>
+                        <p>${cert.issuer} • ${cert.date}</p>
+                        <a href="${cert.verifyUrl}" target="_blank">Verify Credential <i class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // --- 3. INTERACTIVITY ---
+
+        function animateSkills() {
+            const bars = document.querySelectorAll('.progress-bar');
+            bars.forEach(bar => {
+                const level = bar.getAttribute('data-level');
+                bar.style.width = `${level}%`;
+            });
+        }
+
+        // --- 4. INITIALIZATION ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSkills();
+            renderEducation();
+            renderProjects();
+            renderCertificates();
+        });
+    </script>
+
+</body>
+</html>
