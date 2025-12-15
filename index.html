@@ -457,11 +457,11 @@
                 <img src="wen.jpg" alt="Your Profile" id="profile-pic">
             </div>
             <h1 id="name-headline">Wenmark Baja</h1>
-            <h2 id="tagline">I am a BSIT student passionate about learning technology, improving my skills, and building practical IT projects as I prepare for my future career.</h2>
+            <p id="tagline">I am a BSIT student passionate about learning technology, improving my skills, and building practical IT projects as I prepare for my future career.</p>
 
             <div style="margin-bottom: 25px; font-size: 1.1rem; color: #ccc;">
-                <p style="margin: 5px 0;"><i class="fas fa-envelope" style="color: var(--color-accent);"></i> Email: <a href="bajawenmark@gmail.com" style="color: inherit; text-decoration: none;">bajawenmark@gmail.com</a></p>
-                <p style="margin: 5px 0;"><i class="fas fa-phone" style="color: var(--color-accent);"></i> Phone: <a href="tel:+63 912 9289 862" style="color: inherit; text-decoration: none;">+63 912 9289 862</a></p>
+                <p style="margin: 5px 0;"><i class="fas fa-envelope" style="color: var(--color-accent);"></i> Email: <a href="mailto:bajawenmark@gmail.com" style="color: inherit; text-decoration: none;">bajawenmark@gmail.com</a></p>
+                <p style="margin: 5px 0;"><i class="fas fa-phone" style="color: var(--color-accent);"></i> Phone: <a href="tel:+639129289862" style="color: inherit; text-decoration: none;">+63 912 9289 862</a></p>
             </div>
 
             <div class="social-hub">
@@ -474,7 +474,7 @@
     </section>
 
     <section id="info&skills">
-        <h2 id="skills-heading">Basic Info & Skills</h2>
+        <h2>Basic Info & Skills</h2>
         <div class="container skill-grid">
             
             <div class="info-card">
@@ -541,21 +541,21 @@
           {
                 institution: 'Asian Institute of Computer Studies (AICS)',
                 level: 'Senior High School',
-                course: 'Information and Communications Technology (ICT) Strand', // UPDATED
+                course: 'Information and Communications Technology (ICT) Strand',
                 batch: '2024',
-                details: 'Specialized in computer systems, programming fundamentals, and technical expertise.' // Updated details for ICT
+                details: 'Specialized in computer systems, programming fundamentals, and technical expertise.'
             },
             {
                 institution: 'Kasiglahan Village National High School (KVNHS)',
                 level: 'Junior High School',
-                course: 'N/A', // Not applicable for this level
+                course: 'N/A',
                 batch: '2022',
                 details: 'Completed general secondary education requirements.'
             },
             {
                 institution: 'Maranatha Christian Academy (MCA)',
                 level: 'Elementary School',
-                course: 'N/A', // Not applicable for this level
+                course: 'N/A',
                 batch: '2018',
                 details: 'Completed primary education.'
             }
@@ -598,12 +598,14 @@
                 liveUrl: 'https://quizapp-jalen-wen-marco-sadava.netlify.app/',
                 imageUrl: 'quiz.jpg' 
             },
+            // *** FIX: Missing opening curly brace `{` and missing comma after the previous object. ***
+            { 
                 title: 'Resume Website',
                 description: 'This is a resume of 3 people.',
                 stack: ['HTML', 'CSS'],
                 liveUrl: 'https://resumewenmarcojalen.netlify.app/resume1',
                 imageUrl: 'resume.jpg' 
-            },
+            }
         ];
 
         // CERTIFICATES DATA: Using external placeholders
@@ -648,6 +650,7 @@
                 </div>
             `).join('');
             
+            // Start animation after a short delay
             setTimeout(animateSkills, 500);
         }
         
@@ -733,6 +736,3 @@
 </body>
 
 </html>
-
-
-
